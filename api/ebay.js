@@ -1,8 +1,14 @@
-js
-
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const body = req.body;
+    let body = {};
+
+    try {
+      body = JSON.parse(req.body || '{}');
+    } catch (e) {
+      // Fallback if Vercel already parsed it
+      body = req.body || {};
+    }
+
     if (body.challengeCode) {
       return res.status(200).json({ challengeResponse: body.challengeCode });
     }
