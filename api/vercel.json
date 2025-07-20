@@ -1,0 +1,9 @@
+json
+
+{
+  "functions": {
+    "api/ebay.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
